@@ -1,3 +1,8 @@
+;
+; $ nasm -f elf64 pri.asm && gcc pri.o -o pri && ./pri
+; PIC対応なのでprintfは以下のようにWRT ..pltを記述して呼び出す
+; call printf WRT ..plt
+;
 	extern	printf
 
 	section	.data
@@ -9,8 +14,7 @@ main:
 	mov	rdi, fmt
 	mov	rsi, 198
 	xor	rax, rax
-;	call	printf WRT ..plt
-	call	printf
+	call	printf WRT ..plt
 
 	; sys_exit
 	mov	rax, 60
