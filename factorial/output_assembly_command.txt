@@ -1,0 +1,4 @@
+gcc -S -masm=intel -fverbose-asm -O1 factorial.c
+
+objdump -d -M intel factorial
+
